@@ -23,6 +23,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-node": "^5.2.0",
 		"classnames": "^2.5.1",
+		"dotenv": "^17.2.3",
 		"svelte-i18n": "^4.0.1",
 		"viem": "^2.45.1",
 		"ws": "^8.18.0"
