@@ -508,5 +508,19 @@ export default defineConfig({
 	},
 	preview: {
 		port: 6742
+	},
+	build: {
+		// Disable source maps in production to reduce memory usage
+		sourcemap: false,
+		// Use esbuild for minification (faster and less memory than terser)
+		minify: 'esbuild',
+		// Reduce chunk size warnings threshold
+		chunkSizeWarningLimit: 1000,
+		rollupOptions: {
+			output: {
+				// Disable manual chunking to reduce memory during build
+				manualChunks: undefined
+			}
+		}
 	}
 });
