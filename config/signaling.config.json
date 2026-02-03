@@ -1,0 +1,80 @@
+{
+	"id": "signaling-config",
+	"version": "1.0.0",
+	"server": {
+		"port": 6742,
+		"wsPath": "/ws",
+		"host": "0.0.0.0"
+	},
+	"rooms": [
+		{
+			"id": "default",
+			"name": "Default Room",
+			"description": "Default signaling room for all clients",
+			"maxClients": 100,
+			"isPrivate": false,
+			"routingMode": "broadcast",
+			"allowedMessageTypes": [
+				"offer",
+				"answer",
+				"ice-candidate",
+				"join",
+				"leave",
+				"custom"
+			],
+			"createdAt": "2024-01-01T00:00:00.000Z"
+		}
+	],
+	"ipFilters": [],
+	"connectionLimits": {
+		"maxConnectionsPerIP": 10,
+		"maxConnectionsPerUser": 5,
+		"maxConnectionsPerRoom": 100,
+		"maxTotalConnections": 1000
+	},
+	"rateLimitRules": [
+		{
+			"id": "default-rate-limit",
+			"name": "Default Rate Limit",
+			"scope": "per-client",
+			"maxMessages": 100,
+			"windowMs": 1000,
+			"enabled": true
+		}
+	],
+	"auth": {
+		"enabled": true,
+		"method": "ethereum-handshake",
+		"allowAnonymous": false,
+		"anonymousPrefix": "anon_",
+		"handshakeMessage": "Sign this to authenticate with the signaling server",
+		"handshakeExpiry": 300
+	},
+	"webrtc": {
+		"iceServers": [
+			{
+				"id": "google-stun",
+				"urls": [
+					"stun:stun.l.google.com:19302"
+				]
+			}
+		],
+		"iceCandidatePoolSize": 10,
+		"bundlePolicy": "balanced",
+		"iceTransportPolicy": "all",
+		"candidateFilter": {
+			"allowHost": true,
+			"allowSrflx": true,
+			"allowPrflx": true,
+			"allowRelay": true,
+			"allowIPv6": true
+		}
+	},
+	"logging": {
+		"level": "info",
+		"logConnections": true,
+		"logMessages": false,
+		"logErrors": true
+	},
+	"updatedAt": "2026-02-03T14:10:33.536Z"
+}
